@@ -45,21 +45,6 @@ d3.csv("data.csv").then(function(healthData) {
     xScale.domain([xMin, xMax]);
     yScale.domain([yMin, yMax]);
 
-    var toolTip = d3
-        .tip()
-        .attr("class", "tooltip")
-        .offset([50, -50])
-        .html(function(data) {
-            var stateName = data.state;
-            var poverty = +data.poverty;
-            var healthcare = +data.healthcare;
-            return (
-                stateName + '<br> Poverty: ' + poverty + '% <br> Healthcare: ' + healthcare +'%'
-            );
-        });
-
-    svg.call(toolTip);
-
     svg.selectAll("circle")
         .data(healthData)
         .enter()
